@@ -1,4 +1,12 @@
-class Repair < ApplicationRecord
+class Repair
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :estimated_days, type: Integer
+  field :code, type: String
+  field :state, type: String
+  field :cost, type: Float
+
   has_many :revisions, dependent: :delete_all
 
   belongs_to :customer

@@ -34,9 +34,11 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# Use sqlite3 as the database for Active Record
+gem 'sqlite3'
+gem 'mongoid'
+
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
@@ -58,11 +60,6 @@ group :test do
   gem 'chromedriver-helper'
 end
 
-group :production do
-  # Heroku does not support SQLite; use Postgres database
-  gem 'pg'
-end
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -71,6 +68,7 @@ gem 'rails-assets-bootstrap', source: 'https://rails-assets.org'
 gem 'validates'
 gem "faker"
 gem "kaminari"
+gem 'kaminari-mongoid'
 gem 'bootstrap4-kaminari-views'
 gem 'webpacker', '>= 4.0.x'
 gem 'sprockets', '~>3.7.2'

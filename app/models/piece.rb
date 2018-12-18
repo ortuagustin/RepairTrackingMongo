@@ -1,4 +1,11 @@
-class Piece < ApplicationRecord
+class Piece
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :name, type: String
+  field :description, type: String
+  field :cost, type: Float
+
   include Searchable
 
   belongs_to :artifact

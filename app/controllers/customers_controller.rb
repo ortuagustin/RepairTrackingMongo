@@ -45,6 +45,8 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/:id
   # PATCH/PUT /customers/:id.json
   def update
+    adasdsa
+
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: (t 'customers.flash.updated') }

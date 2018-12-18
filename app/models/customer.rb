@@ -1,4 +1,13 @@
-class Customer < ApplicationRecord
+class Customer
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :name, type: String
+  field :surname, type: String
+  field :phone, type: String
+  field :email, type: String
+  field :notes, type: String
+
   include Searchable
 
   has_many :repairs, dependent: :delete_all
