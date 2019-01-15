@@ -2,13 +2,14 @@ module Searchable
   extend ActiveSupport::Concern
 
   included do
-    scope :search, ->(keyword) { where(self.conditions(keyword)) }
+    scope :search, ->(keyword) { any_of(self.conditions(keyword)) }
   end
 
   module ClassMethods
     def conditions(keyword)
       return if keyword.blank?
-      self.searchable_fields.map { |field| "#{field} LIKE '%#{keyword}%'" }.join(' OR ')
+
+      self.searchable_fields.collect { |field| Hash[field, /#{Regexp.quote(keyword)}/i ] }
     end
   end
 end

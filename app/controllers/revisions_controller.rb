@@ -6,7 +6,7 @@ class RevisionsController < ApplicationController
   # GET /repairs/:repair_id/revisions
   # GET /repairs/:repair_id/revisions.json
   def index
-    @revisions = @repair.revisions.order(:created_at).page(params[:page])
+    @revisions = @repair.revisions.order(created_at: :desc).page(params[:page])
   end
 
   # GET /repairs/:repair_id/revisions/new

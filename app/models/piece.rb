@@ -1,10 +1,7 @@
-class Piece
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Piece < ApplicationRecord
   field :name, type: String
   field :description, type: String
-  field :cost, type: Float
+  field :cost, type: Float, default: 0
 
   include Searchable
 

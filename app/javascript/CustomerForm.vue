@@ -2,7 +2,7 @@
 import { AsYouType, parsePhoneNumber } from 'libphonenumber-js'
 
 export default {
-  props: ["dataCustomer", "dataArtifactId", "dataErrors", "goToRepair", "customersUrl", "repairsUrl"],
+  props: ["dataCustomer", "dataArtifactId", "dataErrors", "goToRepair", "customersUrl", "repairsUrl", "isEditing"],
 
   data() {
     return {
@@ -61,23 +61,19 @@ export default {
     },
 
     httpMethod() {
-      return this.isEditing() ? 'patch' : 'post';
+      return this.isEditing ? 'patch' : 'post';
     },
 
     url() {
-      if (this.isEditing()) {
+      if (this.isEditing) {
         return `${this.customersUrl}/${this.customer.id}.json`;
       }
 
       return `${this.customersUrl}.json`;
     },
 
-    isEditing() {
-      return this.customer.id != null;
-    },
-
     handleSuccess(customerData) {
-      if ((this.goToRepair) && (! this.isEditing())) {
+      if ((this.goToRepair) && (! this.isEditing)) {
         let newUrl = new URL(this.repairsUrl);
 
         newUrl.searchParams.append('go_to_repair', true);

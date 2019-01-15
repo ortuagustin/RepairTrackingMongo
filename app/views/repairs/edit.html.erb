@@ -4,6 +4,7 @@
   data-selected-artifact="<%= @selected_artifact || '' %>"
   data-selected-customer="<%= @selected_customer || '' %>"
   data-repair="<%= @repair.to_json %>"
+  :is-editing="<%= @repair.persisted? %>"
   data-errors="<%= @repair.errors.to_json %>"
   repairs-url="<%= repairs_path %>"
   inline-template

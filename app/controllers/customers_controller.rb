@@ -14,7 +14,7 @@ class CustomersController < ApplicationController
 
   # GET /customers/:id
   def show
-    @repairs = @customer.repairs.order(:created_at).page(params[:page])
+    @repairs = @customer.repairs.order(created_at: :desc).page(params[:page])
   end
 
   # GET /customers/new
@@ -45,8 +45,6 @@ class CustomersController < ApplicationController
   # PATCH/PUT /customers/:id
   # PATCH/PUT /customers/:id.json
   def update
-    adasdsa
-
     respond_to do |format|
       if @customer.update(customer_params)
         format.html { redirect_to @customer, notice: (t 'customers.flash.updated') }

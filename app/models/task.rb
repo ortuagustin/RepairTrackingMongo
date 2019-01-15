@@ -1,10 +1,7 @@
-class Task
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Task < ApplicationRecord
   field :name, type: String
   field :description, type: String
-  field :cost, type: Float
+  field :cost, type: Float, default: 0
 
   include Searchable
 

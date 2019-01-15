@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["dataRepair", "dataErrors", "dataSelectedCustomer", "dataSelectedArtifact", "repairsUrl"],
+  props: ["dataRepair", "dataErrors", "dataSelectedCustomer", "dataSelectedArtifact", "repairsUrl", "isEditing"],
 
   data() {
     return {
@@ -57,23 +57,19 @@ export default {
     },
 
     httpMethod() {
-      return this.isEditing() ? 'patch' : 'post';
+      return this.isEditing ? 'patch' : 'post';
     },
 
     url() {
-      if (this.isEditing()) {
+      if (this.isEditing) {
         return `${this.repairsUrl}/${this.repair.id}.json`;
       }
 
       return `${this.repairsUrl}.json`;
     },
 
-    isEditing() {
-      return this.repair.id != null;
-    },
-
     handleSuccess(repairData) {
-      if (this.isEditing()) {
+      if (this.isEditing) {
         location.href = `http://localhost:3000/customers/${this.repair.customer_id}`;
       } else {
         location.href = `${this.repairsUrl}/${repairData.code}/created`

@@ -1,7 +1,4 @@
-class Customer
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Customer < ApplicationRecord
   field :name, type: String
   field :surname, type: String
   field :phone, type: String

@@ -1,7 +1,4 @@
-class Revision
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Revision < ApplicationRecord
   field :notes, type: String
 
   belongs_to :repair

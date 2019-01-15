@@ -1,6 +1,6 @@
 <script>
 export default {
-  props: ["dataArtifact", "dataCustomerId", "dataErrors", "goToRepair", "artifactsUrl", "repairsUrl"],
+  props: ["dataArtifact", "dataCustomerId", "dataErrors", "goToRepair", "artifactsUrl", "repairsUrl", "isEditing"],
 
   data() {
     return {
@@ -27,23 +27,19 @@ export default {
     },
 
     httpMethod() {
-      return this.isEditing() ? 'patch' : 'post';
+      return this.isEditing ? 'patch' : 'post';
     },
 
     url() {
-      if (this.isEditing()) {
+      if (this.isEditing) {
         return `${this.artifactsUrl}/${this.artifact.id}.json`;
       }
 
       return `${this.artifactsUrl}.json`;
     },
 
-    isEditing() {
-      return this.artifact.id != null;
-    },
-
     handleSuccess(artifactData) {
-      if ((this.goToRepair) && (! this.isEditing())) {
+      if ((this.goToRepair) && (! this.isEditing)) {
         let newUrl = new URL(this.repairsUrl);
 
         newUrl.searchParams.append('go_to_repair', true);

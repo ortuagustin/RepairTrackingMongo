@@ -1,7 +1,4 @@
-class Artifact
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Artifact < ApplicationRecord
   field :name, type: String
   field :model, type: String
   field :description, type: String

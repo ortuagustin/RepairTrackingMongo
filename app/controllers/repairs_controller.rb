@@ -22,7 +22,7 @@ class RepairsController < ApplicationController
   # GET /repairs/:id
   # GET /repairs/:id.json
   def show
-    @revisions = @repair.revisions.order(:created_at).page(params[:page])
+    @revisions = @repair.revisions.order(created_at: :desc).page(params[:page])
     @artifact = @repair.artifact
   end
 
@@ -39,7 +39,7 @@ class RepairsController < ApplicationController
 
     unless @repair.nil?
       @artifact = @repair.artifact
-      @revisions = @repair.revisions.order(:created_at).page(params[:page])
+      @revisions = @repair.revisions.order(created_at: :desc).page(params[:page])
       render 'show'
     else
       render 'not_found', locals: { code: params[:code] }

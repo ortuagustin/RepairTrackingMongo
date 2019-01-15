@@ -1,11 +1,8 @@
-class Repair
-  include Mongoid::Document
-  include Mongoid::Timestamps
-
+class Repair < ApplicationRecord
   field :estimated_days, type: Integer
   field :code, type: String
-  field :state, type: String
-  field :cost, type: Float
+  field :state, type: String, default: "PENDIENTE"
+  field :cost, type: Float, default: 0
 
   has_many :revisions, dependent: :delete_all
 
@@ -45,6 +42,10 @@ class Repair
   def self.searchable_fields
     %w[customer_id artifact_id]
   end
+
+  def self.find_by_code(code)
+    self.find_by(code: code)
+  end
 private
   def change_state(new_state)
     return if self.state == new_state
@@ -63,7 +64,7 @@ private
   end
 
   def generate_repair_code
-    self.code = "#{customer.initials.upcase}#{id}"
+    self.code = "#{customer.initials}#{id}".upcase
     self.save!
   end
 

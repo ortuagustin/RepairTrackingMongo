@@ -1,5 +1,6 @@
 <artifact-form
   data-artifact="<%= @artifact.to_json %>"
+  :is-editing="<%= @artifact.persisted? %>"
   data-customer-id="<%= params[:customer_id] || '' %>"
   data-errors="<%= @artifact.errors.to_json %>"
   artifacts-url="<%= artifacts_url %>"
