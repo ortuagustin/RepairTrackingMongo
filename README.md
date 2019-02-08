@@ -1,5 +1,9 @@
-# RepairTracking
-## Métodos Ágiles para Aplicaciones Web
+# RepairTrackingMongo
+## Base de Datos 2
+
+El presente trabajo consiste en una adaptacion del proyecto [RepairTracking](https://github.com/ortuagustin/RepairTracking) para que funcione con una base de datos NoSQL, en particular, [MongoDB](https://www.mongodb.com)
+
+-----
 
 El proyecto consiste en una aplicación web para gestionar reparaciones de diferentes tipos de artefactos/máquinas. La aplicación se utiliza a través de dos roles: Reparador (el cual posee una cuenta registrada) y Cliente. 
 
@@ -13,8 +17,7 @@ El reparador podrá administrar tanto a los clientes como a los artefactos, incl
 ### Alumnos
 
 * Ortu, Agustín
-* Calabrese, Julieta
-* Muñoz, Rocío
+* Camele, Genaro
 
 ### Preparando el ambiente:
 
@@ -24,9 +27,10 @@ El reparador podrá administrar tanto a los clientes como a los artefactos, incl
 * Se utilizó [**Ruby on Rails**](https://rubyonrails.org) 5.2.1 como framework de desarrollo
 * Es necesario tener instalado [**NodeJS**](https://nodejs.org). Se utilizó el gestor de paquetes [**Yarn**](https://yarnpkg.com)
 * Se utilizó [VueJS](https://vuejs.org) como framework de desarrollo para el frontend
-* La base de datos utiliazda es [**SQLite3**](https://www.sqlite.org) 
+* La base de datos utiliazda es [**MongoDB**](https://www.mongodb.com) 
 * **Dependencias**: Como en la mayoria de los proyectos Rails, son gestionadas usando [Bundler](https://github.com/bundler/bundler). Las mas destacadas son:
   - [Rails](https://github.com/rails/rails)
+  - [Mongoid](https://docs.mongodb.com/mongoid/current/)
   - [Bootstrap 4.1](https://getbootstrap.com)
   - [VueJS](https://vuejs.org)
   - [Devise](https://github.com/plataformatec/devise)
@@ -34,12 +38,13 @@ El reparador podrá administrar tanto a los clientes como a los artefactos, incl
   - [Faker](https://github.com/stympy/faker)
   - [Kaminari](https://github.com/kaminari/kaminari)
   - [FontAwesome](https://fontawesome.com/)
+* Se debe contar con una instalación de MongoDB para que la aplicación funcione
 
 1. Clonar el repositorio:
 
 ```bash
-  git clone https://github.com/ortuagustin/RepairTracking.git
-  cd RepairTracking
+  git clone https://github.com/ortuagustin/RepairTrackingMongo.git
+  cd RepairTrackingMongo
 ```
 
 2. Ejecutar bundler para instalar las dependencias de Ruby:
