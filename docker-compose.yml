@@ -1,18 +1,17 @@
 version: '3'
 services:
-  mongo:
-    image: mongo
+  db:
+    image: mongo:4
     volumes:
-      - /data/db
+      - /data/repair_tracking_mongo
     ports:
       - "27017:27017"
+    restart: always
   web:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     restart: always
     ports:
       - "3000:3000"
-    depends_on:
-      - mongo
     links:
-      - mongo
+      - db

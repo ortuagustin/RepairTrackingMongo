@@ -1,11 +1,11 @@
 require 'faker'
 
 User.destroy_all
-Customer.destroy_all
-Artifact.destroy_all
 
 User.create(email: 'ortu.agustin@gmail.com', password: '1234')
 User.create(email: 'test@test.com', password: '1234')
+
+Customer.destroy_all
 
 25.times do |i|
   Customer.create(name: Faker::HarryPotter.unique.character,
@@ -13,6 +13,8 @@ User.create(email: 'test@test.com', password: '1234')
                   phone: "221 #{Faker::Number.number(3)}-#{Faker::Number.number(4)}",
                   email: Faker::Internet.unique.email)
 end
+
+Artifact.destroy_all
 
 heladera = Artifact.new(name: 'Heladera', model: 'PHILCO PHCC340X')
 heladera.pieces << Piece.new(name: 'Motor', cost: Faker::Number.decimal(2, 2))
