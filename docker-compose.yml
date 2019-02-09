@@ -1,6 +1,6 @@
 version: '3'
 services:
-  db:
+  mongo:
     image: mongo
     volumes:
       - /data/db
@@ -13,4 +13,6 @@ services:
     ports:
       - "3000:3000"
     depends_on:
-      - db
+      - mongo
+    links:
+      - mongo
