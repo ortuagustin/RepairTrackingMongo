@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:4
     volumes:
-      - /data/repair_tracking_mongo
+      - mongodata:/data/db
     ports:
       - "27017:27017"
     restart: always
@@ -15,3 +15,5 @@ services:
       - "3000:3000"
     links:
       - mongo
+volumes:
+  mongodata:
